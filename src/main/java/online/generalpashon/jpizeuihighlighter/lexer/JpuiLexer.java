@@ -5,9 +5,8 @@
 package online.generalpashon.jpizeuihighlighter.lexer;
 
 import com.intellij.lexer.FlexLexer;
-import com.intellij.psi.tree.IElementType;
-import online.generalpashon.jpizeuihighlighter.lexer.JpuiTypes;
 import com.intellij.psi.TokenType;
+import com.intellij.psi.tree.IElementType;
 
 
 class JpuiLexer implements FlexLexer {

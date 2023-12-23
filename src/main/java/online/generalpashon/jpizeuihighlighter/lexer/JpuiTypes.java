@@ -1,12 +1,9 @@
 package online.generalpashon.jpizeuihighlighter.lexer;
 
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.IElementType;
 import online.generalpashon.jpizeuihighlighter.parser.JpuiPsiElement;
-
-import java.lang.reflect.InvocationTargetException;
 
 public interface JpuiTypes{
 

@@ -6,9 +6,6 @@ import com.intellij.lang.PsiParser;
 import com.intellij.psi.tree.IElementType;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Deque;
-import java.util.LinkedList;
-
 import static online.generalpashon.jpizeuihighlighter.lexer.JpuiTypes.*;
 
 public class JpuiParser implements PsiParser{
@@ -53,10 +50,9 @@ public class JpuiParser implements PsiParser{
     @Override
     public @NotNull ASTNode parse(@NotNull IElementType root, @NotNull PsiBuilder builder){
         this.builder = builder;
-        System.out.println("\n-->START PARSING:");
-        PsiBuilder.Marker rootMarker = builder.mark();
+        final PsiBuilder.Marker marker = builder.mark();
 
-        IElementType token = peek();
+        final IElementType token = peek();
         if(token == COMPONENT)
             parseComponent();
         else
@@ -65,8 +61,7 @@ public class JpuiParser implements PsiParser{
         while(!builder.eof())
             skip();
 
-        System.out.println("<--END PARSING\n");
-        rootMarker.done(root);
+        marker.done(root);
         return builder.getTreeBuilt();
     }
 
@@ -75,36 +70,26 @@ public class JpuiParser implements PsiParser{
             return;
         expect("(", OPEN_BRACE);
 
-        System.out.print("    -->START ARGS [");
-
         IElementType token = next();
         while(!builder.eof()){
             if(token == CLOSE_BRACE){
                 break;
             }else if(token == COMMA){
-                System.out.print(", ");
                 token = next();
 
                 if(token == CLOSE_BRACE){
                     builder.error("Expected argument");
-                    System.out.println("]<--ERROR ARGS END");
                     break;
                 }
-            }else{
-                System.out.print(string() + " (" + token + ")");
+            }else
                 token = next();
-            }
         }
-
-        System.out.println("]<--END ARGS (with '" + string() + "')");
 
         next();
         expect("{", OPEN_BRACKET);
     }
 
     private void parseComponent(){
-        System.out.println("  -->START COMPONENT (" + string() + ")");
-
         parseComponentArgs();
 
         IElementType token = next();
@@ -112,8 +97,6 @@ public class JpuiParser implements PsiParser{
             parseComponentField(token);
             token = next();
         }
-
-        System.out.println("  <--END COMPONENT (with '" + string() + "')");
     }
 
     private void parseComponentField(IElementType token){
@@ -126,8 +109,6 @@ public class JpuiParser implements PsiParser{
     }
 
     private void parseField(){
-        System.out.println("    -->START FIELD (" + string() + ")");
-
         final IElementType token = next();
         if(token == OPEN_BRACE)
             parseVector();
@@ -137,50 +118,33 @@ public class JpuiParser implements PsiParser{
             parseValue();
         else
             builder.error("Expected value");
-
-        System.out.println("    <--END FIELD");
     }
 
     private void parseComponentFieldGroup(){
-        System.out.println("  -->START GROUP (" + string() + ")");
-
         IElementType token = next();
         while(token != CLOSE_BRACKET && !builder.eof()){
             parseField();
             token = next();
         }
-
-        System.out.println("  <--END GROUP (with '" + string() + "')");
     }
 
-    private void parseValue(){
-        System.out.print("      -->START VALUE '");
-        System.out.println(string() + "' <--END VALUE");
-    }
+    private void parseValue(){ }
 
     private void parseVector(){
-        System.out.print("      -->START VECTOR [");
-
         IElementType token = next();
         while(!builder.eof()){
             if(token == CLOSE_BRACE){
                 break;
             }else if(token == COMMA){
-                System.out.print(", ");
                 token = next();
 
                 if(token == CLOSE_BRACE){
-                    builder.error("Expected argument");
-                    System.out.println("]<--ERROR VECTOR END");
+                    builder.error("Expected value");
                     break;
                 }
-            }else{
-                System.out.print(string() + " (" + token + ")");
+            }else
                 token = next();
-            }
         }
-
-        System.out.println("]<--END VECTOR (with '" + string() + "')");
     }
 
 }

@@ -2,13 +2,10 @@ package online.generalpashon.jpizeuihighlighter.highlighter;
 
 import com.intellij.lexer.Lexer;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
-import com.intellij.openapi.editor.HighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
-import com.intellij.psi.TokenType;
 import com.intellij.psi.tree.IElementType;
 import online.generalpashon.jpizeuihighlighter.lexer.JpuiLexerAdapter;
-import online.generalpashon.jpizeuihighlighter.lexer.JpuiTypes;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -33,9 +30,9 @@ public class JpuiSyntaxHighlighter extends SyntaxHighlighterBase{
         putKey(LITERAL, DefaultLanguageHighlighterColors.STRING);
         putKey(NUMBER, DefaultLanguageHighlighterColors.NUMBER);
         putKey(COMMA, DefaultLanguageHighlighterColors.COMMA);
-        putKey(KEY, DefaultLanguageHighlighterColors.IDENTIFIER); // BLOCK_COMMENT
-        putKey(RESOURCE, DefaultLanguageHighlighterColors.BLOCK_COMMENT); // BLOCK_COMMENT
-        putKey(CONSTRAINT, DefaultLanguageHighlighterColors.NUMBER); // DOC_COMMENT_TAG_VALUE, VALID_STRING_ESCAPE
+        putKey(KEY, DefaultLanguageHighlighterColors.IDENTIFIER);
+        putKey(RESOURCE, DefaultLanguageHighlighterColors.BLOCK_COMMENT);
+        putKey(CONSTRAINT, DefaultLanguageHighlighterColors.NUMBER);
         putKey(OPEN_BRACKET, DefaultLanguageHighlighterColors.DOC_COMMENT_TAG_VALUE);
         putKey(CLOSE_BRACKET, DefaultLanguageHighlighterColors.DOC_COMMENT_TAG_VALUE);
         putKey(OPEN_BRACE, DefaultLanguageHighlighterColors.DOC_COMMENT_TAG_VALUE);
