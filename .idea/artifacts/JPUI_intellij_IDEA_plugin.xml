@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JPUI intellij IDEA plugin">
+    <output-path>$PROJECT_DIR$/out</output-path>
+    <root id="archive" name="jpui-intellij-idea-plugin.jar">
+      <element id="module-output" name="jpize-ui-idea-plugin.main" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources" />
+    </root>
+  </artifact>
+</component>
