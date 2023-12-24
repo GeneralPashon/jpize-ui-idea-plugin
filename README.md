@@ -2,4 +2,6 @@
 
 ![logo](src/main/resources/META-INF/pluginIcon.svg)
 
+### [Plugin home page](https://plugins.jetbrains.com/plugin/23406-jpize-ui)
+
 ### Preview : ![Preview](preview.png)
