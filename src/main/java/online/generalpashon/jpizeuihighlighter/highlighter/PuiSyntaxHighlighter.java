@@ -26,17 +26,18 @@ public class PuiSyntaxHighlighter extends SyntaxHighlighterBase{
 
     public PuiSyntaxHighlighter(){
         this.keys = new HashMap<>();
+        putKey(COMMENT, DefaultLanguageHighlighterColors.LINE_COMMENT);
         putKey(COMPONENT, DefaultLanguageHighlighterColors.METADATA);
         putKey(LITERAL, DefaultLanguageHighlighterColors.STRING);
         putKey(NUMBER, DefaultLanguageHighlighterColors.NUMBER);
         putKey(COMMA, DefaultLanguageHighlighterColors.COMMA);
         putKey(KEY, DefaultLanguageHighlighterColors.IDENTIFIER);
-        putKey(RESOURCE, DefaultLanguageHighlighterColors.BLOCK_COMMENT);
+        putKey(RESOURCE, DefaultLanguageHighlighterColors.CONSTANT);
         putKey(CONSTRAINT, DefaultLanguageHighlighterColors.NUMBER);
-        putKey(OPEN_BRACKET, DefaultLanguageHighlighterColors.DOC_COMMENT_TAG_VALUE);
-        putKey(CLOSE_BRACKET, DefaultLanguageHighlighterColors.DOC_COMMENT_TAG_VALUE);
-        putKey(OPEN_BRACE, DefaultLanguageHighlighterColors.DOC_COMMENT_TAG_VALUE);
-        putKey(CLOSE_BRACE, DefaultLanguageHighlighterColors.DOC_COMMENT_TAG_VALUE);
+        putKey(OPEN_BRACKET, DefaultLanguageHighlighterColors.BRACKETS);
+        putKey(CLOSE_BRACKET, DefaultLanguageHighlighterColors.BRACKETS);
+        putKey(OPEN_BRACE, DefaultLanguageHighlighterColors.BRACES);
+        putKey(CLOSE_BRACE, DefaultLanguageHighlighterColors.BRACES);
     }
 
     @Override

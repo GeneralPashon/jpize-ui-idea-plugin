@@ -53,7 +53,7 @@ public class PuiParserDefinition implements ParserDefinition{
 
     @Override
     public @NotNull PsiElement createElement(ASTNode node){
-        return PuiTypes.createElement(node);
+        return PuiTypes.Factory.createElement(node);
     }
 
 }

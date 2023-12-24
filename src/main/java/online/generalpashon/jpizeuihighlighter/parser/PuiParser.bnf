@@ -1,0 +1,28 @@
+{
+  parserClass="online.generalpashon.jpizeuihighlighter.parser.PuiParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Pui"
+  psiImplClassSuffix="Impl"
+  psiPackage="online.generalpashon.jpizeuihighlighter.parser.psi"
+  psiImplPackage="online.generalpashon.jpizeuihighlighter.parser.impl"
+
+  elementTypeHolderClass="online.generalpashon.jpizeuihighlighter.lexer.PuiTypes"
+  elementTypeClass="online.generalpashon.jpizeuihighlighter.lexer.PuiElementType"
+  tokenTypeClass="online.generalpashon.jpizeuihighlighter.parser.PuiTokenType"
+}
+
+pui_file ::= COMMENT* component_block COMMENT*
+
+component_block ::= COMPONENT arguments? OPEN_BRACKET (component_block|field|COMMENT)* CLOSE_BRACKET
+arguments ::= vector
+
+vector ::= OPEN_BRACE (single_value COMMA?)* CLOSE_BRACE
+
+single_value ::= NUMBER|CONSTRAINT|LITERAL|RESOURCE
+
+field ::= field_single|field_group|field_vector
+field_single ::= KEY single_value
+field_vector ::= KEY vector
+field_group ::= KEY OPEN_BRACKET (field|COMMENT)* CLOSE_BRACKET

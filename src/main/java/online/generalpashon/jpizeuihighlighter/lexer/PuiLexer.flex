@@ -7,7 +7,7 @@ import com.intellij.psi.TokenType;
 
 %%
 
-%class JpuiLexer
+%class PuiLexer
 %implements FlexLexer
 %unicode
 %function advance
@@ -32,6 +32,7 @@ SPACES = \s+
 ")"                                                               { return PuiTypes.CLOSE_BRACE; }
 ","                                                               { return PuiTypes.COMMA; }
 
+"#"(.*[^\n])?                                                     { return PuiTypes.COMMENT; }
 "@"[\w\.]+                                                        { return PuiTypes.COMPONENT; }
 (([0-9\\.]+(px|rw|rh|ap))|auto|zero|match_parent|wrap_content)    { return PuiTypes.CONSTRAINT; }
 ('[\w\s\.\/\\{}\[\]()\-\+\:]*')|(\"[\w\s\.\/\\{}\[\]()\-\+\:]*\") { return PuiTypes.LITERAL; }

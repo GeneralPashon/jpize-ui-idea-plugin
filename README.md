@@ -2,4 +2,4 @@
 
 ![logo](src/main/resources/META-INF/pluginIcon.svg)
 
-### Preview: ![Preview](preview.png)
+### Preview : ![Preview](preview.png)
