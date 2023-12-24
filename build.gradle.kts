@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "online.generalpashon"
-version = "1.0-SNAPSHOT"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -31,8 +31,8 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("222")
-        untilBuild.set("232.*")
+        sinceBuild.set("183.*")
+        untilBuild.set("233.*")
     }
 
     signPlugin {

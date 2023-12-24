@@ -5,20 +5,20 @@ import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.psi.FileViewProvider;
 import org.jetbrains.annotations.NotNull;
 
-public class JpuiFile extends PsiFileBase{
+public class PuiFile extends PsiFileBase{
 
-    public JpuiFile(@NotNull FileViewProvider viewProvider){
-        super(viewProvider, JpuiLanguage.INSTANCE);
+    public PuiFile(@NotNull FileViewProvider viewProvider){
+        super(viewProvider, PuiLanguage.INSTANCE);
     }
 
     @Override
     public @NotNull FileType getFileType(){
-        return JpuiFileType.INSTANCE;
+        return PuiFileType.INSTANCE;
     }
 
     @Override
     public String toString(){
-        return "JPUI File";
+        return "Jpize UI File";
     }
 
 }

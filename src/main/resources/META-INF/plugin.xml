@@ -1,35 +1,35 @@
 <idea-plugin>
     <id>online.generalpashon.jpize-ui-idea-plugin</id>
-    <name>JPUI Syntax Highlighting</name>
-    <version>23.12.1</version>
-    <idea-version since-build="183.0"/>
+    <name>Jpize UI</name>
+    <version>1.1.0</version>
+    <idea-version since-build="183.*" until-build="233.*"/>
 
     <vendor email="goloborodkojava@gmail.com" url="https://generalpashon.online">GeneralPashon</vendor>
 
     <description><![CDATA[
-    Jpize-Engine UI markup language syntax highlight plugin.
+    Jpize Engine UI markup language syntax highlight plugin.
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <fileType
-                name="JPUI File"
-                implementationClass="online.generalpashon.jpizeuihighlighter.lang.JpuiFileType"
+                name="Jpize UI File"
+                implementationClass="online.generalpashon.jpizeuihighlighter.lang.PuiFileType"
                 fieldName="INSTANCE"
-                language="JPUI"
-                extensions=".jpui"/>
+                language="PUI"
+                extensions=".pui"/>
 
         <lang.syntaxHighlighterFactory
-                language="JPUI"
-                implementationClass="online.generalpashon.jpizeuihighlighter.highlighter.JpuiHighlighterFactory"/>
+                language="PUI"
+                implementationClass="online.generalpashon.jpizeuihighlighter.highlighter.PuiHighlighterFactory"/>
 
         <lang.parserDefinition
-                language="JPUI"
-                implementationClass="online.generalpashon.jpizeuihighlighter.parser.JpuiParserDefinition"/>
+                language="PUI"
+                implementationClass="online.generalpashon.jpizeuihighlighter.parser.PuiParserDefinition"/>
 
         <completion.contributor
-                language="JPUI"
-                implementationClass="online.generalpashon.jpizeuihighlighter.codecompletion.JpuiCompletionContributor"/>
+                language="PUI"
+                implementationClass="online.generalpashon.jpizeuihighlighter.codecompletion.PuiCompletionContributor"/>
     </extensions>
 </idea-plugin>

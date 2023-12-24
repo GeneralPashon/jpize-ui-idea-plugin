@@ -4,9 +4,9 @@ import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
 import org.jetbrains.annotations.NotNull;
 
-public class JpuiPsiElement extends ASTWrapperPsiElement{
+public class PuiPsiElement extends ASTWrapperPsiElement{
 
-    public JpuiPsiElement(@NotNull ASTNode node){
+    public PuiPsiElement(@NotNull ASTNode node){
         super(node);
     }
 

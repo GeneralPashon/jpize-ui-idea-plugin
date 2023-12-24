@@ -5,18 +5,18 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 
-public final class JpuiFileType extends LanguageFileType{
+public final class PuiFileType extends LanguageFileType{
 
-    public static final JpuiFileType INSTANCE = new JpuiFileType();
+    public static final PuiFileType INSTANCE = new PuiFileType();
 
-    private JpuiFileType(){
-        super(JpuiLanguage.INSTANCE);
+    private PuiFileType(){
+        super(PuiLanguage.INSTANCE);
     }
 
     @NotNull
     @Override
     public String getName(){
-        return "JPUI File";
+        return "Jpize UI File";
     }
 
     @NotNull
@@ -28,12 +28,12 @@ public final class JpuiFileType extends LanguageFileType{
     @NotNull
     @Override
     public String getDefaultExtension(){
-        return ".jpui";
+        return ".pui";
     }
 
     @Override
     public Icon getIcon(){
-        return JpuiIcons.FILE;
+        return PuiIcons.FILE;
     }
 
 }

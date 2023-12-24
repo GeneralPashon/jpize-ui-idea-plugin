@@ -1,7 +1,5 @@
-# JPUI plugin for Intellij IDEA
+# [Jpize](https://github.com/GeneralPashon/jpize-engine) UI Plugin for Intellij IDEA
 
-![JPUI](src/main/resources/META-INF/pluginIcon.svg)
-
-### JPUI - is a UI markup language in [Jpize Engine](https://github.com/GeneralPashon/jpize-engine)
+![logo](src/main/resources/META-INF/pluginIcon.svg)
 
 ### Preview: ![Preview](preview.png)

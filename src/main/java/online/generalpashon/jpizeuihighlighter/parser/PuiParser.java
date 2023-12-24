@@ -6,9 +6,9 @@ import com.intellij.lang.PsiParser;
 import com.intellij.psi.tree.IElementType;
 import org.jetbrains.annotations.NotNull;
 
-import static online.generalpashon.jpizeuihighlighter.lexer.JpuiTypes.*;
+import static online.generalpashon.jpizeuihighlighter.lexer.PuiTypes.*;
 
-public class JpuiParser implements PsiParser{
+public class PuiParser implements PsiParser{
 
     private PsiBuilder builder;
 

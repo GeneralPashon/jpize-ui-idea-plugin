@@ -5,15 +5,15 @@ import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
 import com.intellij.psi.tree.IElementType;
-import online.generalpashon.jpizeuihighlighter.lexer.JpuiLexerAdapter;
+import online.generalpashon.jpizeuihighlighter.lexer.PuiLexerAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static online.generalpashon.jpizeuihighlighter.lexer.JpuiTypes.*;
+import static online.generalpashon.jpizeuihighlighter.lexer.PuiTypes.*;
 
-public class JpuiSyntaxHighlighter extends SyntaxHighlighterBase{
+public class PuiSyntaxHighlighter extends SyntaxHighlighterBase{
 
     private final Map<IElementType, TextAttributesKey[]> keys;
     private final TextAttributesKey[] EMPTY_KEYS = new TextAttributesKey[0];
@@ -24,9 +24,9 @@ public class JpuiSyntaxHighlighter extends SyntaxHighlighterBase{
         });
     }
 
-    public JpuiSyntaxHighlighter(){
+    public PuiSyntaxHighlighter(){
         this.keys = new HashMap<>();
-        putKey(COMPONENT, DefaultLanguageHighlighterColors.STATIC_METHOD);
+        putKey(COMPONENT, DefaultLanguageHighlighterColors.METADATA);
         putKey(LITERAL, DefaultLanguageHighlighterColors.STRING);
         putKey(NUMBER, DefaultLanguageHighlighterColors.NUMBER);
         putKey(COMMA, DefaultLanguageHighlighterColors.COMMA);
@@ -41,7 +41,7 @@ public class JpuiSyntaxHighlighter extends SyntaxHighlighterBase{
 
     @Override
     public @NotNull Lexer getHighlightingLexer(){
-        return new JpuiLexerAdapter();
+        return new PuiLexerAdapter();
     }
 
     @Override

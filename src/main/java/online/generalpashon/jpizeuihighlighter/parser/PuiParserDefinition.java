@@ -10,29 +10,29 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.tree.IFileElementType;
 import com.intellij.psi.tree.TokenSet;
-import online.generalpashon.jpizeuihighlighter.lang.JpuiFile;
-import online.generalpashon.jpizeuihighlighter.lang.JpuiLanguage;
-import online.generalpashon.jpizeuihighlighter.lexer.JpuiLexerAdapter;
-import online.generalpashon.jpizeuihighlighter.lexer.JpuiTypes;
+import online.generalpashon.jpizeuihighlighter.lang.PuiFile;
+import online.generalpashon.jpizeuihighlighter.lang.PuiLanguage;
+import online.generalpashon.jpizeuihighlighter.lexer.PuiLexerAdapter;
+import online.generalpashon.jpizeuihighlighter.lexer.PuiTypes;
 import org.jetbrains.annotations.NotNull;
 
-public class JpuiParserDefinition implements ParserDefinition{
+public class PuiParserDefinition implements ParserDefinition{
 
-    public static final IFileElementType FILE = new IFileElementType(JpuiLanguage.INSTANCE);
+    public static final IFileElementType FILE = new IFileElementType(PuiLanguage.INSTANCE);
 
     @Override
     public @NotNull Lexer createLexer(Project project){
-        return new JpuiLexerAdapter();
+        return new PuiLexerAdapter();
     }
 
     @Override
     public @NotNull PsiParser createParser(Project project){
-        return new JpuiParser();
+        return new PuiParser();
     }
 
     @Override
     public @NotNull PsiFile createFile(@NotNull FileViewProvider viewProvider){
-        return new JpuiFile(viewProvider);
+        return new PuiFile(viewProvider);
     }
 
 
@@ -43,17 +43,17 @@ public class JpuiParserDefinition implements ParserDefinition{
 
     @Override
     public @NotNull TokenSet getCommentTokens(){
-        return JpuiTokenSets.COMMENTS;
+        return PuiTokenSets.COMMENTS;
     }
 
     @Override
     public @NotNull TokenSet getStringLiteralElements(){
-        return JpuiTokenSets.LITERALS;
+        return PuiTokenSets.LITERALS;
     }
 
     @Override
     public @NotNull PsiElement createElement(ASTNode node){
-        return JpuiTypes.createElement(node);
+        return PuiTypes.createElement(node);
     }
 
 }
