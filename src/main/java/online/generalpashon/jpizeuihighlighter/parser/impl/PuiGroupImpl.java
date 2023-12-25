@@ -1,24 +1,25 @@
 // This is a generated file. Not intended for manual editing.
 package online.generalpashon.jpizeuihighlighter.parser.impl;
 
-import java.util.List;
-import org.jetbrains.annotations.*;
+import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
-import static online.generalpashon.jpizeuihighlighter.lexer.PuiTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
-import online.generalpashon.jpizeuihighlighter.parser.psi.*;
+import online.generalpashon.jpizeuihighlighter.parser.psi.PuiField;
+import online.generalpashon.jpizeuihighlighter.parser.psi.PuiGroup;
+import online.generalpashon.jpizeuihighlighter.parser.psi.PuiVisitor;
+import org.jetbrains.annotations.NotNull;
 
-public class PuiFieldGroupImpl extends ASTWrapperPsiElement implements PuiFieldGroup {
+import java.util.List;
 
-  public PuiFieldGroupImpl(@NotNull ASTNode node) {
+public class PuiGroupImpl extends ASTWrapperPsiElement implements PuiGroup {
+
+  public PuiGroupImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull PuiVisitor visitor) {
-    visitor.visitFieldGroup(this);
+    visitor.visitGroup(this);
   }
 
   @Override

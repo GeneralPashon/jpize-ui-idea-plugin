@@ -13,16 +13,18 @@
   tokenTypeClass="online.generalpashon.jpizeuihighlighter.parser.PuiTokenType"
 }
 
-pui_file ::= COMMENT* component_block COMMENT*
+pui_file ::= (alias_block|COMMENT)* component_block
 
 component_block ::= COMPONENT arguments? OPEN_BRACKET (component_block|field|COMMENT)* CLOSE_BRACKET
 arguments ::= vector
 
+alias_block ::= ALIAS ASSIGN value
+
+field ::= KEY value
+value ::= vector|group|single_value
+
+single_value ::= NUMBER|CONSTRAINT|LITERAL|RESOURCE|ALIAS
 vector ::= OPEN_BRACE (single_value COMMA?)* CLOSE_BRACE
+group ::= OPEN_BRACKET (field|COMMENT)* CLOSE_BRACKET
 
-single_value ::= NUMBER|CONSTRAINT|LITERAL|RESOURCE
 
-field ::= field_single|field_group|field_vector
-field_single ::= KEY single_value
-field_vector ::= KEY vector
-field_group ::= KEY OPEN_BRACKET (field|COMMENT)* CLOSE_BRACKET

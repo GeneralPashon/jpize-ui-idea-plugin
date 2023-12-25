@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>online.generalpashon.jpize-ui-idea-plugin</id>
     <name>Jpize UI</name>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <idea-version since-build="183.*" until-build="233.*"/>
 
     <vendor email="goloborodkojava@gmail.com" url="https://generalpashon.online">GeneralPashon</vendor>

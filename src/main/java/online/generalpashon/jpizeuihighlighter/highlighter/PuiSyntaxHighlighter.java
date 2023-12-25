@@ -33,6 +33,7 @@ public class PuiSyntaxHighlighter extends SyntaxHighlighterBase{
         putKey(COMMA, DefaultLanguageHighlighterColors.COMMA);
         putKey(KEY, DefaultLanguageHighlighterColors.IDENTIFIER);
         putKey(RESOURCE, DefaultLanguageHighlighterColors.CONSTANT);
+        putKey(ALIAS, DefaultLanguageHighlighterColors.CONSTANT);
         putKey(CONSTRAINT, DefaultLanguageHighlighterColors.NUMBER);
         putKey(OPEN_BRACKET, DefaultLanguageHighlighterColors.BRACKETS);
         putKey(CLOSE_BRACKET, DefaultLanguageHighlighterColors.BRACKETS);

@@ -5,9 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface PuiFieldVector extends PsiElement {
+public interface PuiGroup extends PsiElement {
 
   @NotNull
-  PuiVector getVector();
+  List<PuiField> getFieldList();
 
 }

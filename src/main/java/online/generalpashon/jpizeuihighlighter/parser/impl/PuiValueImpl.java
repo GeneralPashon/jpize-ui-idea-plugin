@@ -1,24 +1,21 @@
 // This is a generated file. Not intended for manual editing.
 package online.generalpashon.jpizeuihighlighter.parser.impl;
 
-import java.util.List;
-import org.jetbrains.annotations.*;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.psi.util.PsiTreeUtil;
-import static online.generalpashon.jpizeuihighlighter.lexer.PuiTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
+import com.intellij.lang.ASTNode;
+import com.intellij.psi.PsiElementVisitor;
 import online.generalpashon.jpizeuihighlighter.parser.psi.*;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class PuiFieldSingleImpl extends ASTWrapperPsiElement implements PuiFieldSingle {
+public class PuiValueImpl extends ASTWrapperPsiElement implements PuiValue {
 
-  public PuiFieldSingleImpl(@NotNull ASTNode node) {
+  public PuiValueImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull PuiVisitor visitor) {
-    visitor.visitFieldSingle(this);
+    visitor.visitValue(this);
   }
 
   @Override
@@ -28,9 +25,21 @@ public class PuiFieldSingleImpl extends ASTWrapperPsiElement implements PuiField
   }
 
   @Override
-  @NotNull
+  @Nullable
+  public PuiGroup getGroup() {
+    return findChildByClass(PuiGroup.class);
+  }
+
+  @Override
+  @Nullable
   public PuiSingleValue getSingleValue() {
-    return findNotNullChildByClass(PuiSingleValue.class);
+    return findChildByClass(PuiSingleValue.class);
+  }
+
+  @Override
+  @Nullable
+  public PuiVector getVector() {
+    return findChildByClass(PuiVector.class);
   }
 
 }

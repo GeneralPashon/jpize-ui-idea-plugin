@@ -1,15 +1,15 @@
 // This is a generated file. Not intended for manual editing.
 package online.generalpashon.jpizeuihighlighter.parser;
 
+import com.intellij.lang.ASTNode;
+import com.intellij.lang.LightPsiParser;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiBuilder.Marker;
-import static online.generalpashon.jpizeuihighlighter.lexer.PuiTypes.*;
-import static com.intellij.lang.parser.GeneratedParserUtilBase.*;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.tree.TokenSet;
 import com.intellij.lang.PsiParser;
-import com.intellij.lang.LightPsiParser;
+import com.intellij.psi.tree.IElementType;
+
+import static com.intellij.lang.parser.GeneratedParserUtilBase.*;
+import static online.generalpashon.jpizeuihighlighter.lexer.PuiTypes.*;
 
 @SuppressWarnings({"SimplifiableIfStatement", "UnusedAssignment"})
 public class PuiParser implements PsiParser, LightPsiParser {
@@ -33,6 +33,19 @@ public class PuiParser implements PsiParser, LightPsiParser {
 
   static boolean parse_root_(IElementType t, PsiBuilder b, int l) {
     return pui_file(b, l + 1);
+  }
+
+  /* ********************************************************** */
+  // ALIAS ASSIGN value
+  public static boolean alias_block(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "alias_block")) return false;
+    if (!nextTokenIs(b, ALIAS)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokens(b, 0, ALIAS, ASSIGN);
+    r = r && value(b, l + 1);
+    exit_section_(b, m, ALIAS_BLOCK, r);
+    return r;
   }
 
   /* ********************************************************** */
@@ -92,47 +105,46 @@ public class PuiParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // field_single|field_group|field_vector
+  // KEY value
   public static boolean field(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "field")) return false;
     if (!nextTokenIs(b, KEY)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = field_single(b, l + 1);
-    if (!r) r = field_group(b, l + 1);
-    if (!r) r = field_vector(b, l + 1);
+    r = consumeToken(b, KEY);
+    r = r && value(b, l + 1);
     exit_section_(b, m, FIELD, r);
     return r;
   }
 
   /* ********************************************************** */
-  // KEY OPEN_BRACKET (field|COMMENT)* CLOSE_BRACKET
-  public static boolean field_group(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "field_group")) return false;
-    if (!nextTokenIs(b, KEY)) return false;
+  // OPEN_BRACKET (field|COMMENT)* CLOSE_BRACKET
+  public static boolean group(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "group")) return false;
+    if (!nextTokenIs(b, OPEN_BRACKET)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeTokens(b, 0, KEY, OPEN_BRACKET);
-    r = r && field_group_2(b, l + 1);
+    r = consumeToken(b, OPEN_BRACKET);
+    r = r && group_1(b, l + 1);
     r = r && consumeToken(b, CLOSE_BRACKET);
-    exit_section_(b, m, FIELD_GROUP, r);
+    exit_section_(b, m, GROUP, r);
     return r;
   }
 
   // (field|COMMENT)*
-  private static boolean field_group_2(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "field_group_2")) return false;
+  private static boolean group_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "group_1")) return false;
     while (true) {
       int c = current_position_(b);
-      if (!field_group_2_0(b, l + 1)) break;
-      if (!empty_element_parsed_guard_(b, "field_group_2", c)) break;
+      if (!group_1_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "group_1", c)) break;
     }
     return true;
   }
 
   // field|COMMENT
-  private static boolean field_group_2_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "field_group_2_0")) return false;
+  private static boolean group_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "group_1_0")) return false;
     boolean r;
     r = field(b, l + 1);
     if (!r) r = consumeToken(b, COMMENT);
@@ -140,77 +152,61 @@ public class PuiParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // KEY single_value
-  public static boolean field_single(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "field_single")) return false;
-    if (!nextTokenIs(b, KEY)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, KEY);
-    r = r && single_value(b, l + 1);
-    exit_section_(b, m, FIELD_SINGLE, r);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // KEY vector
-  public static boolean field_vector(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "field_vector")) return false;
-    if (!nextTokenIs(b, KEY)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, KEY);
-    r = r && vector(b, l + 1);
-    exit_section_(b, m, FIELD_VECTOR, r);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // COMMENT* component_block COMMENT*
+  // (alias_block|COMMENT)* component_block
   static boolean pui_file(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "pui_file")) return false;
-    if (!nextTokenIs(b, "", COMMENT, COMPONENT)) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = pui_file_0(b, l + 1);
     r = r && component_block(b, l + 1);
-    r = r && pui_file_2(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
   }
 
-  // COMMENT*
+  // (alias_block|COMMENT)*
   private static boolean pui_file_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "pui_file_0")) return false;
     while (true) {
       int c = current_position_(b);
-      if (!consumeToken(b, COMMENT)) break;
+      if (!pui_file_0_0(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "pui_file_0", c)) break;
     }
     return true;
   }
 
-  // COMMENT*
-  private static boolean pui_file_2(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "pui_file_2")) return false;
-    while (true) {
-      int c = current_position_(b);
-      if (!consumeToken(b, COMMENT)) break;
-      if (!empty_element_parsed_guard_(b, "pui_file_2", c)) break;
-    }
-    return true;
+  // alias_block|COMMENT
+  private static boolean pui_file_0_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "pui_file_0_0")) return false;
+    boolean r;
+    r = alias_block(b, l + 1);
+    if (!r) r = consumeToken(b, COMMENT);
+    return r;
   }
 
   /* ********************************************************** */
-  // NUMBER|CONSTRAINT|LITERAL|RESOURCE
+  // NUMBER|CONSTRAINT|LITERAL|RESOURCE|ALIAS
   public static boolean single_value(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "single_value")) return false;
     boolean r;
-    Marker m = enter_section_(b, l, _NONE_, SINGLE_VALUE, "single-value");
+    Marker m = enter_section_(b, l, _NONE_, SINGLE_VALUE, "<single value>");
     r = consumeToken(b, NUMBER);
     if (!r) r = consumeToken(b, CONSTRAINT);
     if (!r) r = consumeToken(b, LITERAL);
     if (!r) r = consumeToken(b, RESOURCE);
+    if (!r) r = consumeToken(b, ALIAS);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // vector|group|single_value
+  public static boolean value(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "value")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, VALUE, "<value>");
+    r = vector(b, l + 1);
+    if (!r) r = group(b, l + 1);
+    if (!r) r = single_value(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }

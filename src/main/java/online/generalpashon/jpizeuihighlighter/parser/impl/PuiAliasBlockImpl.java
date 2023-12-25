@@ -4,19 +4,19 @@ package online.generalpashon.jpizeuihighlighter.parser.impl;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElementVisitor;
-import online.generalpashon.jpizeuihighlighter.parser.psi.PuiField;
+import online.generalpashon.jpizeuihighlighter.parser.psi.PuiAliasBlock;
 import online.generalpashon.jpizeuihighlighter.parser.psi.PuiValue;
 import online.generalpashon.jpizeuihighlighter.parser.psi.PuiVisitor;
 import org.jetbrains.annotations.NotNull;
 
-public class PuiFieldImpl extends ASTWrapperPsiElement implements PuiField {
+public class PuiAliasBlockImpl extends ASTWrapperPsiElement implements PuiAliasBlock {
 
-  public PuiFieldImpl(@NotNull ASTNode node) {
+  public PuiAliasBlockImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull PuiVisitor visitor) {
-    visitor.visitField(this);
+    visitor.visitAliasBlock(this);
   }
 
   @Override

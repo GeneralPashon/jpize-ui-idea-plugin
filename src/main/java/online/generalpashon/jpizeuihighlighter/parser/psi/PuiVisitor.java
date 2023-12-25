@@ -7,6 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public class PuiVisitor extends PsiElementVisitor {
 
+  public void visitAliasBlock(@NotNull PuiAliasBlock o) {
+    visitPsiElement(o);
+  }
+
   public void visitArguments(@NotNull PuiArguments o) {
     visitPsiElement(o);
   }
@@ -19,19 +23,15 @@ public class PuiVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitFieldGroup(@NotNull PuiFieldGroup o) {
-    visitPsiElement(o);
-  }
-
-  public void visitFieldSingle(@NotNull PuiFieldSingle o) {
-    visitPsiElement(o);
-  }
-
-  public void visitFieldVector(@NotNull PuiFieldVector o) {
+  public void visitGroup(@NotNull PuiGroup o) {
     visitPsiElement(o);
   }
 
   public void visitSingleValue(@NotNull PuiSingleValue o) {
+    visitPsiElement(o);
+  }
+
+  public void visitValue(@NotNull PuiValue o) {
     visitPsiElement(o);
   }
 

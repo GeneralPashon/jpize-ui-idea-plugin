@@ -1,4 +1,14 @@
 
+# Style alias
+$button_style = {
+    background.color: (0.5, 0.5, 0.5, 0.75)
+    corner_radius: 35px
+
+    # Borders
+    border_size: 3px
+    border_color: (1.0, 1.0, 1.0, 0.9)
+}
+
 # Layout
 @VBox {
 
@@ -10,14 +20,7 @@
         padding: (0.35rh, zero, auto, zero) # rw/rh - relative to parent width/height,
 
         # Set 'button' style
-        style: {
-            background.color: (0.5, 0.5, 0.5, 0.75)
-            corner_radius: 35px
-
-            # Borders
-            border_size: 3px
-            border_color: (1.0, 1.0, 1.0, 0.9)
-        }
+        style: $button_style
     }
 }
 
